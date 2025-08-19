@@ -542,50 +542,7 @@
 
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
-    <script>
-        // Seleciona a seção
-        const container = document.getElementBy Id('inicio');
-        
-        let scene, camera, renderer, cube;
-
-        function init() {
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-            renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setSize(container.clientWidth, container.clientHeight);
-            container.appendChild(renderer.domElement);
-            
-            // Criando um cubo
-            const geometry = new THREE.BoxGeometry();
-            const material = new THREE.MeshBasicMaterial({ map: texture });
-            cube = new THREE.Mesh(geometry, material);
-            scene.add(cube);
-            
-            camera.position.z = window.innerWidth < 600 ? 3 : 5;
-            animate();
-        }
-
-        const textureLoader = new THREE.TextureLoader();
-        const texture = textureLoader.load('https://threejs.org/examples/textures/crate.gif');
-
-        function animate() {
-            requestAnimationFrame(animate);
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.01;
-            renderer.render(scene, camera);
-        }
-
-        function onResize() {
-            camera.aspect = container.clientWidth / container.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(container.clientWidth, container.clientHeight);
-            camera.position.z = window.innerWidth < 600 ? 3 : 5;
-        }
-
-        window.addEventListener('resize', onResize);
-        
-        init();
-    </script>
+    
 </body>
 
 </html>
